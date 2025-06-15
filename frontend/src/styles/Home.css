@@ -1,4 +1,7 @@
 /* Container for the whole page */
+body {
+  margin: 0
+}
 div {
   font-family: Arial, sans-serif;
 }
@@ -65,4 +68,23 @@ form input[type="submit"] {
 
 form input[type="submit"]:hover {
   background-color: #0056b3;
+}
+
+nav {
+  position: fixed;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  background-color: rgba(000, 000, 000, 0.5);
+  color: white;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1px 10px;
+}
+
+nav>button {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
 }
