@@ -1,25 +1,25 @@
 import { useState, useEffect } from "react";
 import api from "../api";
-import Note from "../components/Notes";
+import Records from "../components/Records";
 import "../styles/Home.css";
 import { useNavigate } from "react-router-dom";
 
 function Home() {
-  const [notes, setNotes] = useState([]);
-  const [content, setContent] = useState("");
+  const [records, setRecords] = useState([]);
   const [title, setTitle] = useState("");
+  const [artist, setArtist] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    getNotes();
+    getRecords();
   }, []);
 
-  const getNotes = () => {
-    api
-      .get("/api/notes/")
+  const getRecords = async () => {
+    await api
+      .get("/api/records/")
       .then((res) => res.data)
       .then((data) => {
-        setNotes(data.reverse());
+        setRecords(data.reverse());
         console.log(data);
       })
       .catch((err) => alert(err));
@@ -27,23 +27,23 @@ function Home() {
 
   const deleteNote = (id) => {
     api
-      .delete(`/api/notes/delete/${id}/`)
+      .delete(`/api/records/delete/${id}/`)
       .then((res) => {
         if (res.status === 204) alert("Note was deleted!");
         else alert("Failed to delete");
-        getNotes();
+        getRecords();
       })
       .catch((err) => alert(err));
   };
 
-  const createNote = (e) => {
+  const addRecord = (e) => {
     e.preventDefault();
     api
-      .post("/api/notes/", { content, title })
+      .post("/api/records/", { artist, title })
       .then((res) => {
         if (res.status === 201) alert("Note created.");
         else alert("Error while creating note");
-        getNotes();
+        getRecords();
       })
       .catch((err) => alert(err));
   };
@@ -59,8 +59,8 @@ function Home() {
       <div
         style={{ padding: "100px", boxSizing: "border-box", maxWidth: "100%" }}
       >
-        <h2>Create a note</h2>
-        <form onSubmit={createNote}>
+        <h2>Add a record</h2>
+        <form onSubmit={addRecord}>
           <label htmlFor="title">Title:</label>
           <br />
           <input
@@ -73,15 +73,15 @@ function Home() {
           />
           <br />
 
-          <label htmlFor="content">Content:</label>
+          <label htmlFor="content">Artist:</label>
           <br />
           <input
             type="text"
             id="content"
             name="content"
             required
-            onChange={(e) => setContent(e.target.value)}
-            value={content}
+            onChange={(e) => setArtist(e.target.value)}
+            value={artist}
           />
           <br />
           <input type="submit" value="Submit"></input>
@@ -89,9 +89,13 @@ function Home() {
       </div>
 
       <div>
-        {notes.map((note) => (
-          <Note note={note} onDelete={deleteNote} key={note.id} />
-        ))}
+        {records.length > 0 ? (
+          records.map((record) => (
+            <Records record={record} onDelete={deleteNote} key={record.id} />
+          ))
+        ) : (
+          <p>No records found</p>
+        )}
       </div>
     </div>
   );
