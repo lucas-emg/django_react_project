@@ -1,4 +1,4 @@
 .idea/
 .denv/
 **/__pycache__/
-migrations/
+**/migrations/
