@@ -1,6 +1,6 @@
 import { useState } from "react";
 import api from "../api.js";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { ACCESS_TOKEN, REFRESH_TOKEN } from "../constants.js";
 import "../styles/Form.css";
 import LoadingIndicator from "./LoadingIndicator.jsx";
@@ -54,6 +54,20 @@ function Form({ route, method }) {
       <button className={"form-button"} type={"submit"}>
         {name}
       </button>
+
+      {method == "login" ? (
+        <div>
+          <p>
+            Not registered yet? <Link to={"/register/"}>Sign up here!</Link>
+          </p>
+        </div>
+      ) : (
+        <div>
+          <p>
+            Already a member? <Link to={"/login/"}>Log in here!</Link>
+          </p>
+        </div>
+      )}
     </form>
   );
 }
