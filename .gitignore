@@ -1,4 +1,4 @@
 .idea/
 .denv/
-backend/api/__pycache__/
-**/migrations/
+__pycache__/
+*.pyc
