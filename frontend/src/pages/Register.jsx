@@ -1,7 +1,12 @@
-import Form from "../components/Form.jsx"
+import Form from "../components/Form.jsx";
+import "../styles/Form.css";
 
 function Register() {
-    return <Form route={"/api/user/register/"} method={"register"}/>
+  return (
+    <div className="login-register-container">
+      <Form route={"/api/user/register/"} method={"register"} />
+    </div>
+  );
 }
 
-export default Register
+export default Register;

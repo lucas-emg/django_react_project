@@ -35,20 +35,20 @@ function Form({ route, method }) {
 
   return (
     <form onSubmit={handleSubmit} className={"form-container"}>
-      <h1>{name}</h1>
+      <img src="../logo_main.png" />
       <input
         className={"form-input"}
         type={"text"}
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        placeholder={"Username"}
+        placeholder={"username"}
       />
       <input
         className={"form-input"}
         type={"password"}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        placeholder={"Password"}
+        placeholder={"password"}
       />
       {loading && <LoadingIndicator />}
       <button className={"form-button"} type={"submit"}>
@@ -58,13 +58,19 @@ function Form({ route, method }) {
       {method == "login" ? (
         <div>
           <p>
-            Not registered yet? <Link to={"/register/"}>Sign up here!</Link>
+            Not registered yet?{" "}
+            <Link to={"/register/"} className="form-container-link">
+              Sign up here!
+            </Link>
           </p>
         </div>
       ) : (
         <div>
           <p>
-            Already a member? <Link to={"/login/"}>Log in here!</Link>
+            Already a member?{" "}
+            <Link to={"/login/"} className="form-container-link">
+              Log in here!
+            </Link>
           </p>
         </div>
       )}
