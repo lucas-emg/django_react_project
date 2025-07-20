@@ -58,13 +58,19 @@ function Form({ route, method }) {
       {method == "login" ? (
         <div>
           <p>
-            Not registered yet? <Link to={"/register/"}>Sign up here!</Link>
+            Not registered yet?{" "}
+            <Link to={"/register/"} className="form-container-link">
+              Sign up here!
+            </Link>
           </p>
         </div>
       ) : (
         <div>
           <p>
-            Already a member? <Link to={"/login/"}>Log in here!</Link>
+            Already a member?{" "}
+            <Link to={"/login/"} className="form-container-link">
+              Log in here!
+            </Link>
           </p>
         </div>
       )}
