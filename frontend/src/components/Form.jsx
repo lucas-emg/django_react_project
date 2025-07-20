@@ -35,20 +35,20 @@ function Form({ route, method }) {
 
   return (
     <form onSubmit={handleSubmit} className={"form-container"}>
-      <h1>{name}</h1>
+      <img src="../logo_main.png" />
       <input
         className={"form-input"}
         type={"text"}
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        placeholder={"Username"}
+        placeholder={"username"}
       />
       <input
         className={"form-input"}
         type={"password"}
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        placeholder={"Password"}
+        placeholder={"password"}
       />
       {loading && <LoadingIndicator />}
       <button className={"form-button"} type={"submit"}>

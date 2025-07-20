@@ -51,10 +51,10 @@ function Home() {
   return (
     <div>
       <nav className="top-nav">
-        <h1>To Do App</h1>
         <button className="logout-button" onClick={() => navigate("/logout")}>
           Logout
         </button>
+        <img src="./logo_main.png" />
       </nav>
       <div
         style={{ padding: "100px", boxSizing: "border-box", maxWidth: "100%" }}
